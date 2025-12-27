@@ -19,7 +19,7 @@ jobs:
         run: dotnet build src/Web/Web.csproj --configuration Release
 
       - name: Run Tests
-        run: dotnet test src/UnitTests/UnitTests.csproj --configuration Release
+        run: dotnet test tests/UnitTests/UnitTests.csproj --configuration Release
 
   deploy:
     runs-on: ubuntu-latest

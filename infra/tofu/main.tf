@@ -54,7 +54,8 @@ resource "azurerm_linux_web_app" "app" {
   }
 
   app_settings = {
-    "ConnectionStrings__CatalogConnection" = "Server=tcp:${azurerm_mssql_server.sql.fully_qualified_domain_name},1433;Initial Catalog=${azurerm_mssql_database.db.name};User ID=${var.sql_admin_username};Password=${var.sql_admin_password};"
-    "ASPNETCORE_ENVIRONMENT"               = "Development"
+    "ConnectionStrings__CatalogConnection"  = "Server=tcp:${azurerm_mssql_server.sql.fully_qualified_domain_name},1433;Initial Catalog=${azurerm_mssql_database.db.name};User ID=${var.sql_admin_username};Password=${var.sql_admin_password};MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+    "ConnectionStrings__IdentityConnection" = "Server=tcp:${azurerm_mssql_server.sql.fully_qualified_domain_name},1433;Initial Catalog=${azurerm_mssql_database.db.name};User ID=${var.sql_admin_username};Password=${var.sql_admin_password};MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+    "ASPNETCORE_ENVIRONMENT"                = "Development"
   }
 }
